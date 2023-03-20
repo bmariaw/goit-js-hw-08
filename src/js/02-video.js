@@ -7,10 +7,10 @@ const player = new Vimeo(iframe);
 const keyStorage = 'videoplayer-current-time';
 
 player.on('timeupdate', throttle((data) => {
-    localStorage.setItem(keyStorage, JSON.parse(data.seconds));
+    localStorage.setItem(keyStorage, data.seconds);
 }, 1000));
 
-const currentTime = JSON.stringify(localStorage.getItem(keyStorage));
+const currentTime = localStorage.getItem(keyStorage);
 
 player.setCurrentTime(currentTime).then(function(seconds) {
     // seconds = the actual time that the player seeked to
